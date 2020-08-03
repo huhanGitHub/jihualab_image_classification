@@ -31,7 +31,7 @@ print('\n')
 print('total test cases: '+str(len(y_pre)))
 print('\n')
 
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, precision_recall_curve
 
 print('accuracy:'+str(accuracy_score(y_pre, y_ref)))
 print('accuracy without normalize:'+str(accuracy_score(y_pre, y_ref, normalize=False)))
