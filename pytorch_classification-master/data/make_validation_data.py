@@ -1,5 +1,5 @@
-val_data_path = 'D:\\data\\data_processed\\val'
-val_result_path = 'D:\\data\\data_processed\\val_results.txt'
+val_data_path = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\test'
+val_result_path = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\test_results.txt'
 f = open(val_result_path, 'a+')
 import os
 

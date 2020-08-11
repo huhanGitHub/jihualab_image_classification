@@ -1,14 +1,8 @@
 import os
 import glob
-
-
-
 import sys 
 sys.path.append("..") 
 import cfg
-
-
-
 
 if __name__ == '__main__':
     traindata_path = cfg.BASE + 'train'
@@ -18,7 +12,7 @@ if __name__ == '__main__':
     txtpath = cfg.BASE
     # print(labels)
     for index, label in enumerate(labels):
-        imglist = glob.glob(os.path.join(traindata_path,label, '*.png'))
+        imglist = glob.glob(os.path.join(traindata_path, label, '*.png'))
         # print(imglist)
         with open(txtpath + 'train.txt', 'a')as f:
             for img in imglist:
