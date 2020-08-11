@@ -140,7 +140,7 @@ if __name__ == "__main__":
 
 ######################################################################
     # #保存测试集特征
-    with open(cfg.VAL_LABEL_DIR, 'r')as f:
+    with open(cfg.TEST_LABEL_DIR, 'r')as f:
         imgs = f.readlines()
     test_feature_path = feature_path + 'testfeature.pkl'
     test_id_path = feature_path + 'testid.pkl'

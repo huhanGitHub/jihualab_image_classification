@@ -6,7 +6,7 @@
 import os
 home = 'D:\\projects\\pytorch_classification-master\\pytorch_classification-master\\'
 ##数据集的类别
-NUM_CLASSES = 3
+NUM_CLASSES = 4
 
 #训练时batch的大小
 BATCH_SIZE = 32
@@ -48,8 +48,9 @@ MODEL_NAMES = {
 
 BASE = home + '/data/'
 #数据集的存放位置
-TRAIN_LABEL_DIR =BASE + 'train.txt'
+TRAIN_LABEL_DIR = BASE + 'train.txt'
 VAL_LABEL_DIR = BASE + 'val.txt'
+TEST_LABEL_DIR = BASE + 'test.txt'
 
 
 ##训练完成，权重文件的保存路径,默认保存在trained_model下
