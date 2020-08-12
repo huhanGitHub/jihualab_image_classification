@@ -44,6 +44,7 @@ class  SelfCustomDataset(Dataset):
         self.input_size = cfg.INPUT_SIZE
 
     def __getitem__(self, index):
+        #print(self.imgs[index])
         img_path, label = self.imgs[index]
         # print(img_path)
         img = Image.open(img_path).convert('RGB')
@@ -68,11 +69,22 @@ class  SelfCustomDataset(Dataset):
 #设置多线程，来相对提升数据提取的速度
 
 train_label_dir = cfg.TRAIN_LABEL_DIR
+validation_label_dir = cfg.VAL_LABEL_DIR
+
 train_datasets = SelfCustomDataset(train_label_dir)
 train_dataloader = torch.utils.data.DataLoader(train_datasets, batch_size=batch_size, shuffle=True, num_workers=4)
 
+validation_datasets = SelfCustomDataset(validation_label_dir)
+validation_dataloader = torch.utils.data.DataLoader(validation_datasets, batch_size=batch_size, shuffle=True, num_workers=4)
+
+
 ##进行数据提取函数的测试
 if __name__ =="__main__":
+     # for images, labels in train_dataloader:
+     #     print(labels)
 
-    for images, labels in train_dataloader:
+    for images, labels in validation_dataloader:
+        print(images)
         print(labels)
+
+

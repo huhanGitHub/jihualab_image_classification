@@ -14,7 +14,7 @@ BATCH_SIZE = 32
 #网络默认输入图像的大小
 INPUT_SIZE = 300
 #训练最多的epoch
-MAX_EPOCH = 3
+MAX_EPOCH = 6
 # 使用gpu的数目
 GPUS = 1
 # 从第几个epoch开始resume训练，如果为0，从头开始
@@ -25,7 +25,7 @@ MOMENTUM = 0.9
 # 初始学习率
 LR = 1e-3
 # 训练好模型的保存位置
-SAVE_FOLDER = './weights'
+SAVE_FOLDER = './weights_'
 
 # 采用的模型名称
 model_name = 'densenet121'

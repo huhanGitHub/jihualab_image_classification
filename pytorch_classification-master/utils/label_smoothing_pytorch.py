@@ -1,6 +1,7 @@
 
 import torch.nn as nn
 import torch.nn.functional as F
+import torch
 
 class LabelSmoothingCrossEntropy(nn.Module):
     def __init__(self, eps=0.1, reduction='mean'):
