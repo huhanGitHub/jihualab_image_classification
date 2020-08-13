@@ -1,5 +1,5 @@
-path_predicted = 'D:\\projects\\pytorch_classification-master\\pytorch_classification-master\\data\\densenet121_submission.csv'
-path_reference = 'D:\\projects\\pytorch_classification-master\\pytorch_classification-master\\data\\val_results.txt'
+path_predicted = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\resnext101_32x16d_submission.csv'
+path_reference = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\test_results.txt'
 
 y_predicted = open(path_predicted).readlines()
 y_reference = open(path_reference).readlines()

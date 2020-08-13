@@ -1,8 +1,3 @@
-# _*_coding:utf-8 _*_
-# @author: lxztju
-# @time: 2020/4/25 14:47
-# @github: https://github.com/lxztju
-
 import torch
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier

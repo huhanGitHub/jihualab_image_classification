@@ -1,8 +1,3 @@
-# -*- coding:utf-8 -*-
-# @time :2020.02.09
-# @IDE : pycharm
-# @author :lxztju
-# @github : https://github.com/lxztju
 import os
 import torch
 import torch.nn as nn
@@ -99,8 +94,8 @@ if __name__ == '__main__':
     # step 学习率调整参数
     stepvalues = (10 * epoch_size, 20 * epoch_size, 30 * epoch_size)
     step_index = 0
-
     model.train()
+
     for iteration in range(start_iter, max_iter):
         global_step += 1
 
@@ -140,20 +135,23 @@ if __name__ == '__main__':
         ## 获取image 和 label
         # try:
         images, labels = next(batch_iterator)
-        validation_images, validation_labels = next(validation_batch_iterator)
-        # except:
-        #     continue
+
+        # try:
+        #     validation_images, validation_labels = next(validation_batch_iterator)
+        # except StopIteration as e:
+        #     print('stop validation iteration, reset validation iter...')
+        #     validation_batch_iterator = iter(validation_dataloader)
+        #     validation_images, validation_labels = next(validation_batch_iterator)
 
         ##在pytorch0.4之后将Variable 与tensor进行合并，所以这里不需要进行Variable封装
         if torch.cuda.is_available():
             images, labels = images.cuda(), labels.cuda()
-            validation_images, validation_labels = validation_images.cuda(), validation_labels.cuda()
 
         out = model(images)
 
         loss = criterion(out, labels.long())
 
-        loss.requires_grad = True
+        #loss.requires_grad = True
 
         optimizer.zero_grad()  # 清空梯度信息，否则在每次进行反向传播时都会累加
 
@@ -171,16 +169,28 @@ if __name__ == '__main__':
                   + '|| Totel iter ' + repr(iteration) + ' || Loss: %.6f||' % (loss.item()) + 'ACC: %.3f ||' % (
                               train_acc * 100) + 'LR: %.8f' % (lr))
 
+        if iteration % 10 == 0:
             # validate the model
             print('validate the model...')
             model.eval()
-            validation_out = model(validation_images)
-            validation_loss = criterion(validation_out, validation_labels.long())
-            validation_prediction = torch.max(validation_out, 1)[1]
-            validation_correct = (validation_prediction == validation_labels).sum()
-            validation_acc = (validation_correct.float())/batch_size
+
+            validation_loss = 0
+            validation_correct = 0
+
+            with torch.no_grad():
+                for validation_images, validation_labels in validation_dataloader:
+                    if torch.cuda.is_available():
+                        validation_images, validation_labels = validation_images.cuda(), validation_labels.cuda()
+                    validation_out = model(validation_images)
+                    validation_prediction = torch.max(validation_out, 1)[1]
+                    validation_loss += criterion(validation_out, validation_labels.long())
+                    validation_correct += (validation_prediction == validation_labels).sum()
+
+            validation_acc = (validation_correct.float())/(validation_dataloader.__len__()*batch_size)
             print('Epoch:' + repr(epoch) + ' || epochiter: ' + repr(iteration % epoch_size) + '/' + repr(epoch_size)
                   + '|| Totel iter ' + repr(iteration) + ' || Validation Loss: %.6f||' % (validation_loss.item()) + 'ACC: %.3f ||' % (
                               validation_acc * 100) + 'LR: %.8f' % (lr))
+            print('\n')
+            model.train()
 
 

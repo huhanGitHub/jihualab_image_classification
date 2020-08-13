@@ -1,22 +1,22 @@
-train_dataset_0 = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\train\\0'
-train_dataset_1 = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\train\\1'
-train_dataset_2 = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\train\\2'
-train_dataset_3 = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\train\\3'
+train_dataset_0 = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\train\\0'
+train_dataset_1 = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\train\\1'
+train_dataset_2 = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\train\\2'
+train_dataset_3 = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\train\\3'
 
-val_dataset_0 = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\val\\0'
-val_dataset_1 = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\val\\1'
-val_dataset_2 = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\val\\2'
-val_dataset_3 = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\val\\3'
+val_dataset_0 = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\val\\0'
+val_dataset_1 = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\val\\1'
+val_dataset_2 = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\val\\2'
+val_dataset_3 = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\val\\3'
 
-test_dataset_0 = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\test\\0'
-test_dataset_1 = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\test\\1'
-test_dataset_2 = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\test\\2'
-test_dataset_3 = 'D:\projects\pytorch_classification-master\pytorch_classification-master\data\\test\\3'
+test_dataset_0 = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\test\\0'
+test_dataset_1 = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\test\\1'
+test_dataset_2 = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\test\\2'
+test_dataset_3 = 'D:\Machine_Learning\projects\pytorch_classification-master\pytorch_classification-master\data\\test\\3'
 
 import os
 from PIL import Image
 
-#category 0:  count*9 (45, 60, 90, 180, 270, LEFT_RIGHT, TOP_BOTTOM, 300, 330), 60*10
+#category 0:  count*10 (45, 60, 90, 180, 270, LEFT_RIGHT, TOP_BOTTOM, 300, 330), 60*10
 def process_category_0(path):
     for root, dirs, files in os.walk(path):
         print(root)

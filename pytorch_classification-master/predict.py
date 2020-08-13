@@ -1,9 +1,3 @@
-# -*- coding:utf-8 -*-
-# @time :2019.03.15
-# @IDE : pycharm
-# @author :lxztju
-# @github : https://github.com/lxztju
-
 import torch
 import os
 from PIL import Image

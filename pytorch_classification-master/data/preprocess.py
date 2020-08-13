@@ -33,6 +33,7 @@ if __name__ == '__main__':
         # print(imglist)
 
     imglist = glob.glob(os.path.join(test_path, '*.png'))
+    print(imglist)
     with open(txtpath + 'test.txt', 'a')as f:
         for img in imglist:
             f.write(img)

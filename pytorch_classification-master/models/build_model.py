@@ -1,9 +1,3 @@
-# -*- coding:utf-8 -*-
-# @time :2020.03.17
-# @IDE : pycharm
-# @author :lxztju
-# @github : https://github.com/lxztju
-
 from torch.hub import load_state_dict_from_url
 import torch.nn as nn
 import torch
@@ -55,10 +49,10 @@ def Resnext101_32x8d(num_classes, test=False):
 def Resnext101_32x16d(num_classes, test=False):
     model = resnext101_32x16d_wsl()
     if not test:
-        if LOCAL_PRETRAINED['resnext101_32x16d'] == None:
-            state_dict = load_state_dict_from_url(model_urls['resnext101_32x16d'], progress=True)
+        if LOCAL_PRETRAINED['weights_resnext101_32x16d'] == None:
+            state_dict = load_state_dict_from_url(model_urls['weights_resnext101_32x16d'], progress=True)
         else:
-            state_dict = state_dict = torch.load(LOCAL_PRETRAINED['resnext101_32x16d'])
+            state_dict = state_dict = torch.load(LOCAL_PRETRAINED['weights_resnext101_32x16d'])
         model.load_state_dict(state_dict)
     fc_features = model.fc.in_features
     model.fc = nn.Linear(fc_features, num_classes)
@@ -68,10 +62,10 @@ def Resnext101_32x16d(num_classes, test=False):
 def Resnext101_32x32d(num_classes, test=False):
     model = resnext101_32x32d_wsl()
     if not test:
-        if local_pretrained['resnext101_32x32d'] == None:
+        if LOCAL_PRETRAINED['resnext101_32x32d'] == None:
             state_dict = load_state_dict_from_url(model_urls['resnext101_32x32d'], progress=True)
         else:
-            state_dict = state_dict = torch.load(local_pretrained['resnext101_32x32d'])
+            state_dict = state_dict = torch.load(LOCAL_PRETRAINED['resnext101_32x32d'])
         model.load_state_dict(state_dict)
     fc_features = model.fc.in_features
     model.fc = nn.Linear(fc_features, num_classes)
@@ -81,10 +75,10 @@ def Resnext101_32x32d(num_classes, test=False):
 def Resnext101_32x48d(num_classes, test=False):
     model = resnext101_32x48d_wsl()
     if not test:
-        if local_pretrained['resnext101_32x48d'] == None:
+        if LOCAL_PRETRAINED['resnext101_32x48d'] == None:
             state_dict = load_state_dict_from_url(model_urls['resnext101_32x48d'], progress=True)
         else:
-            state_dict = state_dict = torch.load(local_pretrained['resnext101_32x48d'])
+            state_dict = state_dict = torch.load(LOCAL_PRETRAINED['resnext101_32x48d'])
         model.load_state_dict(state_dict)
     fc_features = model.fc.in_features
     model.fc = nn.Linear(fc_features, num_classes)
