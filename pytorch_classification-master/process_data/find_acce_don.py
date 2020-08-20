@@ -1,10 +1,10 @@
-tadf_path = 'D:\data\data_processed\data with DA\\train\\0'
+tadf_path = 'D:\data\data_processed\data with DA\\train\\2'
 prefix = 'EM-TADF-'
 
 donor_path = 'D:\data\machie learning data\Donor\png'
 acceptor_path = 'D:\data\machie learning data\Acceptor\png'
 
-final_output = 'D:\data\data_processed\data with DA\\train\\0_DA'
+final_output = 'D:\data\data_processed\data with DA\\train\\2_DA'
 
 import os
 import shutil
