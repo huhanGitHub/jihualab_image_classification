@@ -7,6 +7,7 @@ import numpy as np
 from collections import Counter
 import cfg
 from data import tta_test_transform, get_test_transform
+from torch.nn import functional as F
 
 def load_checkpoint(filepath):
     checkpoint = torch.load(filepath)
@@ -25,7 +26,7 @@ def predict(model):
     ##将模型放置在gpu上运行
     if torch.cuda.is_available():
         model.cuda()
-    pred_list, _id = [], []
+    pred_list, _id, pred_pro_list = [], [], []
     for i in tqdm(range(len(imgs))):
         img_path = imgs[i].strip()
         # print(img_path)
@@ -38,9 +39,12 @@ def predict(model):
             img = img.cuda()
         with torch.no_grad():
             out = model(img)
+        softmax = F.softmax(out, dim=-1)
+        #print(softmax.tolist()[0])
+        pred_pro_list.append(softmax.tolist()[0])
         prediction = torch.argmax(out, dim=1).cpu().item()
         pred_list.append(prediction)
-    return _id, pred_list
+    return _id, pred_list, pred_pro_list
 
 
 def tta_predict(model):
@@ -80,9 +84,9 @@ if __name__ == "__main__":
         imgs = f.readlines()
 
     # _id, pred_list = tta_predict(trained_model)
-    _id, pred_list = predict(trained_model)
+    _id, pred_list, pred_pro_list = predict(trained_model)
 
-    submission = pd.DataFrame({"ID": _id, "Label": pred_list})
+    submission = pd.DataFrame({"ID": _id, "Label": pred_list, 'Probability': pred_pro_list})
     submission.to_csv(cfg.BASE + '{}_submission.csv'
                       .format(model_name), index=False, header=False)
 
