@@ -1,4 +1,27 @@
-# pytorch_classification
+# pytorch_classification_OLED
+The purpose of this project is to train machine learninng models to predict some characteristics of oled materials without experiments.
+
+This project is based on pytorch and some open-source projects. Current machine learning models include densenet，resnext，mobilenet，efficientnet, resnet, simple conv3 and so on.  
+
+Follow the next steps to run and test the models:
+
+(1) make data in the format of normal pytorch project, and put the same class in one directory.
+
+(2) Acoording to current demands, run the codes in directory 'process data' to preprocess the data as you want.
+
+(3) run 'data\make_test_data.py' to generate test data and coressponding labels.
+
+check all the configuration in  'cfg.py'
+
+(4) run 'data\preprocess.py' to generate train.txt, test.txt, and val.txt from your dataset.
+
+(5) run 'train.py' to train. The trained model folder will be placed in root directory and named by model name and date.  
+
+
+(6) run 'predict.py' to predict. The predicted result will be placed in folder 'data' by named model name + submission.csv
+
+(7) run 'metrics.py' to calculate all metrics.
+
 
 利用pytorch实现图像分类，其中包含的densenet，resnext，mobilenet，efficientnet, resnet等图像分类网络，可以根据需要再行利用torchvision扩展其他的分类算法
 

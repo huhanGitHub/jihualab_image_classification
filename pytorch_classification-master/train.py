@@ -35,7 +35,7 @@ if __name__ == '__main__':
                         param.requires_grad = False
         else:
             model = cfg.MODEL_NAMES[cfg.model_name](cfg.model_name, num_classes=cfg.NUM_CLASSES)
-            # print(model)
+            print(model)
             c = 0
             for name, p in model.named_parameters():
                 c += 1
@@ -151,7 +151,7 @@ if __name__ == '__main__':
 
         loss = criterion(out, labels.long())
 
-        #loss.requires_grad = True
+        loss.requires_grad = True
 
         optimizer.zero_grad()  # 清空梯度信息，否则在每次进行反向传播时都会累加
 

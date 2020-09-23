@@ -6,6 +6,7 @@ from torchvision.models import resnet101, densenet121, densenet169, resnet50, mo
 from models import resnext101_32x8d_wsl, resnext101_32x16d_wsl, resnext101_32x32d_wsl, resnext101_32x48d_wsl
 from models import EfficientNet
 from models import LOCAL_PRETRAINED, model_urls
+from .Conv3 import conv3
 
 def Resnet50(num_classes, test=False):
     model = resnet50()
@@ -166,4 +167,11 @@ def Efficientnet(model_name, num_classes, test = False):
     fc_features = model._fc.in_features
     model._fc = nn.Linear(fc_features, num_classes)
     return model
+
+def Conv3(num_classes, test = False):
+    model = conv3(num_classes)
+    print(model)
+    return model
+
+
 
